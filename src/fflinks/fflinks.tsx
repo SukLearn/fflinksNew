@@ -1,7 +1,7 @@
 import styles from "./fflinks.module.css";
 import { useState, FormEvent } from "react";
 import axios from "axios";
-
+import Footer from "./Components/Footer/footer";
 export default function Fflinks() {
   const [display, setDisplay] = useState("block");
   const [inputValue, setInputValue] = useState("");
@@ -74,6 +74,7 @@ export default function Fflinks() {
         <span className={styles.flicker}>LI</span>N
         <span className={styles.flicker}>K</span>S
       </div>
+      <Footer />
     </div>
   );
 }
