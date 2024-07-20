@@ -1,0 +1,355 @@
+.body {
+  background-image: url("/src/Images/test.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 100vh;
+  color: white;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+body,
+html {
+  overflow-x: hidden;
+}
+/* input[type="submit"] {
+  } */
+@media (max-width: 600px) {
+  .input_field {
+    padding: 5px 10px;
+    font-size: 0.5rem;
+  }
+  #top {
+    font-size: 1rem;
+  }
+  #middle {
+    font-size: 0.8rem;
+  }
+  .bottom button {
+    padding: 0.35rem 1.2rem;
+    cursor: pointer;
+    margin: 0.7rem 0.7rem;
+    text-align: center;
+    background-color: transparent;
+    font-size: 0.8rem;
+    border: solid 0.1rem #611515;
+    color: whitesmoke;
+  }
+  .sign {
+    max-width: fit-content;
+    position: absolute;
+    top: 20%;
+    font-size: 3rem;
+  }
+  #great {
+    display: none;
+    width: 0%;
+    height: 0%;
+  }
+  #hideShow {
+    display: none;
+  }
+}
+@media (min-width: 601px) {
+  .input_field {
+    padding: 10px 20px;
+    max-width: 100%;
+    max-height: 100%;
+    width: 22.43rem;
+    height: 2.625rem;
+    font-size: 1rem;
+  }
+  #top {
+    font-size: 1.6rem;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+  }
+
+  #middle {
+    font-size: 1.4rem;
+    border-radius: 0.625rem;
+    -webkit-border-radius: 0.625rem;
+    -moz-border-radius: 0.625rem;
+    -ms-border-radius: 0.625rem;
+    -o-border-radius: 0.625rem;
+  }
+
+  .bottom button {
+    font-size: 1rem;
+    border-radius: 0.625rem;
+    -webkit-border-radius: 0.625rem;
+    -moz-border-radius: 0.625rem;
+    -ms-border-radius: 0.625rem;
+    -o-border-radius: 0.625rem;
+  }
+  #hideShow {
+    max-width: 100%;
+
+    background-color: transparent;
+    font-size: 1rem;
+    margin: 1rem auto;
+    cursor: pointer;
+    width: 5rem;
+    padding: 0.5rem 0.5rem;
+    border: solid 1px #611515;
+    color: whitesmoke;
+    border-radius: 0.625rem;
+    -webkit-border-radius: 0.625rem;
+    -moz-border-radius: 0.625rem;
+    -ms-border-radius: 0.625rem;
+    -o-border-radius: 0.625rem;
+  }
+  #top:hover,
+  #middle:hover,
+  .bottom button:hover,
+  #hideShow:hover {
+    background-color: whitesmoke;
+    color: black;
+  }
+
+  #great {
+    border: solid 3px green;
+    max-width: 100%;
+  }
+
+  .sign {
+    max-width: 100%;
+    font-size: 6em;
+  }
+}
+.input_field {
+  position: relative;
+  cursor: text;
+  border: 2px solid;
+  animation: rgb 5s linear infinite;
+  -webkit-animation: rgb 5s linear infinite;
+  border-radius: 15px;
+  box-shadow: 2px 5px 0px 0px rgba(49, 71, 56, 0.34);
+  -webkit-box-shadow: 2px 5px 0px 0px rgba(49, 71, 56, 0.34);
+  -moz-box-shadow: 2px 5px 0px 0px rgba(49, 71, 56, 0.34);
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+
+.input_field:hover {
+  background-color: #f0f0f0;
+}
+.input_field:focus {
+  cursor: default;
+  background-color: #f0f0f0;
+  border: 3px solid whitesmoke;
+  cursor: text;
+  animation: none;
+  -webkit-animation: none;
+}
+.input_field::placeholder {
+  color: black;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: 400;
+  box-sizing: border-box;
+}
+.bottom button {
+  padding: 0.35rem 1.2rem;
+  cursor: pointer;
+  margin: 0.7rem 0.7rem;
+  text-align: center;
+  background-color: transparent;
+  border: solid 0.1rem #611515;
+  color: whitesmoke;
+}
+.sign {
+  background-image: radial-gradient(
+    ellipse 50% 35% at 50% 50%,
+    #6b1839,
+    transparent
+  );
+  letter-spacing: 0.1rem;
+  font-family: "Clip";
+  color: #ffe6ff;
+  text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+    -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
+    0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+  animation: shine 2s forwards, flicker 3s infinite;
+  -webkit-animation: shine 2s forwards, flicker 3s infinite;
+}
+.fastFlicker {
+  animation: shine 2s forwards, blink 10s 1s infinite;
+  -webkit-animation: shine 2s forwards, blink 10s 1s infinite;
+}
+.flicker {
+  animation: shine 2s forwards, blink 3s 2s infinite;
+  -webkit-animation: shine 2s forwards, blink 3s 2s infinite;
+}
+
+#top,
+#middle {
+  border: 0.1rem solid #611515;
+  padding: 0.35rem 1.2rem;
+  margin: 0.7rem auto;
+  cursor: pointer;
+  color: white;
+  display: block;
+  background-color: transparent;
+}
+/* Only Animations Below */
+
+@keyframes shine {
+  0% {
+    color: #6b1839;
+    text-shadow: none;
+  }
+  100% {
+    color: #ffe6ff;
+    text-shadow: 2 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+      -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
+      0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+  }
+}
+
+@keyframes blink {
+  0%,
+  22%,
+  36%,
+  75% {
+    color: #ffe6ff;
+    text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+      -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
+      0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+  }
+  28%,
+  33% {
+    color: #ff65bd;
+    text-shadow: none;
+  }
+  82%,
+  97% {
+    color: #ff2483;
+    text-shadow: none;
+  }
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 1;
+  }
+  4% {
+    opacity: 0.9;
+  }
+  6% {
+    opacity: 0.85;
+  }
+  8% {
+    opacity: 0.95;
+  }
+  10% {
+    opacity: 0.9;
+  }
+  11% {
+    opacity: 0.922;
+  }
+  12% {
+    opacity: 0.9;
+  }
+  14% {
+    opacity: 0.95;
+  }
+  16% {
+    opacity: 0.98;
+  }
+  17% {
+    opacity: 0.9;
+  }
+  19% {
+    opacity: 0.93;
+  }
+  20% {
+    opacity: 0.99;
+  }
+  24% {
+    opacity: 1;
+  }
+  26% {
+    opacity: 0.94;
+  }
+  28% {
+    opacity: 0.98;
+  }
+  37% {
+    opacity: 0.93;
+  }
+  38% {
+    opacity: 0.5;
+  }
+  39% {
+    opacity: 0.96;
+  }
+  42% {
+    opacity: 1;
+  }
+  44% {
+    opacity: 0.97;
+  }
+  46% {
+    opacity: 0.94;
+  }
+  56% {
+    opacity: 0.9;
+  }
+  58% {
+    opacity: 0.9;
+  }
+  60% {
+    opacity: 0.99;
+  }
+  68% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.9;
+  }
+  72% {
+    opacity: 0.95;
+  }
+  93% {
+    opacity: 0.93;
+  }
+  95% {
+    opacity: 0.95;
+  }
+  97% {
+    opacity: 0.93;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes rgb {
+  0% {
+    border-color: rgb(255, 0, 0);
+  }
+  33% {
+    border-color: rgb(0, 255, 0);
+  }
+  66% {
+    border-color: rgb(0, 0, 255);
+  }
+  100% {
+    border-color: rgb(255, 0, 0);
+  }
+}
