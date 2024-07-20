@@ -65,7 +65,7 @@ export default function Fflinks() {
       </div>
       <img
         style={{ display: display }}
-        src="src\assets\test.webp"
+        src="assets\test.webp"
         alt="The Great Gatsby Gives Toast"
         id={styles.great}
       />
