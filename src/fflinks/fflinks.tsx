@@ -9,9 +9,16 @@ export default function Fflinks() {
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     try {
-      const response = await axios.post("https://suklearn/submit", {
-        inputValue,
-      });
+      const response = await axios.post(
+        "https://suk-learn-bzl4l7ns2-kuramas-projects.vercel.app/api/submit",
+        {
+          methid: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ string: inputValue }),
+        }
+      );
       console.log("Form submitted with response:", response.data);
     } catch (err) {
       console.error("Error submitting form", err);
