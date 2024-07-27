@@ -1,32 +1,43 @@
 import { useEffect, useState } from "react";
+import Modal from "react-modal";
 import styles from "./ShowPage.module.css";
 import axios from "axios";
-
+import Author from "../../../Components/Author/author";
+import Loading from "../LoadingPage/Loading";
 interface DataItem {
   id: number;
   input_value: string;
 }
 
-function trimming(text: string) {
-  if (text.length >= 50) {
-    return text.substring(0, 50) + "...";
-  } else {
-    return text;
-  }
-}
-
 export default function ShowPage() {
   const [data, setData] = useState<DataItem[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [text, setText] = useState("");
-  const [copied, setCopied] = useState(false);
+  const [copiedIndex, setCopiedIndex] = useState(-1);
+  const [modalIsOpen, setIsOpen] = useState(false);
 
-  const copyToClipBoard = (text: string) => {
+  function openModal(index: number) {
+    setIsOpen(true);
+    setCopiedIndex(index);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+    setCopiedIndex(-1);
+  }
+  function trimming(text: string) {
+    if (text.length >= 50) {
+      return text.substring(0, 50) + "...";
+    } else {
+      return text;
+    }
+  }
+
+  const copyToClipBoard = (text: string, index: number) => {
     navigator.clipboard
       .writeText(text)
       .then(() => {
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
+        setCopiedIndex(index);
+        setTimeout(() => setCopiedIndex(-1), 2000);
       })
       .catch((err) => {
         console.error("Failed to copy Text Due to: ", err);
@@ -59,31 +70,26 @@ export default function ShowPage() {
   if (loading)
     return (
       <>
-        <div className={styles.loaderBody}>
-          <img
-            className={styles.loadingIMG}
-            src="https://i.pinimg.com/736x/62/7f/ea/627feabb3ce71527b2ecdf0a6204e661.jpg"
-            alt="MEME"
-          />
-          <div className={styles.loaders}>
-            <div className={styles.loader}></div>
-            <div className={styles.loaderDifferent}></div>
-            <div className={styles.loader}></div>
-          </div>
-        </div>
+        <Loading />
       </>
     );
 
   return (
     <>
       <div className={styles.showBd}>
-        <h1 className={styles.show}>Show Data</h1>
+        <div className={styles.truth}>
+          <span className={styles.show}>
+            <span className={styles.replace}>Show Data</span>
+          </span>
+        </div>
         <div className={styles.table}>
           <table>
             <thead>
               <tr>
-                <th>ID</th>
-                <th>Input Value</th>
+                <th id={styles.startTh}>ID</th>
+                <th className={styles.otherTh}>Value</th>
+                <th className={styles.otherTh}>Copy</th>
+                <th id={styles.endTh}>View Full</th>
               </tr>
             </thead>
             <tbody>
@@ -91,25 +97,40 @@ export default function ShowPage() {
                 <tr key={item.id}>
                   <td>{index + 1}</td>
                   <td>{trimming(item.input_value)}</td>
-                  <td>Copy</td>
-                  <button onClick={() => copyToClipBoard(item.input_value)}>
-                    Copy to Clipboard
-                  </button>
-                  {copied && <span>Copied!</span>}
-
-                  <td>{/* <button onClick={openModal}>View All</button> */}</td>
+                  <td>
+                    <button
+                      className={styles.copyToClipboard}
+                      onClick={() => copyToClipBoard(item.input_value, index)}
+                    >
+                      {copiedIndex === index ? <span>&#9989;</span> : "Copy"}
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      className={styles.modalButton}
+                      onClick={() => openModal(index)}
+                    >
+                      View All
+                    </button>
+                  </td>
                 </tr>
               ))}
-              <tr>
-                <td>asdasdasdasdasdasdasdasdasdasdasdasdasdasdasd</td>
-                <td>asdasdasd</td>
-              </tr>
             </tbody>
           </table>
-          <div>
-            <textarea value={text} onChange={(e) => setText(e.target.value)} />
-          </div>
         </div>
+        {modalIsOpen && copiedIndex !== -1 && (
+          <Modal
+            isOpen={modalIsOpen}
+            onRequestClose={closeModal}
+            contentLabel="Content"
+          >
+            <div className={styles.content}>
+              {data[copiedIndex].input_value}
+            </div>
+          </Modal>
+        )}
+
+        <Author />
       </div>
     </>
   );

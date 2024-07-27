@@ -1,0 +1,27 @@
+@media (max-width: 600px) {
+  #hideShow {
+    display: none;
+  }
+}
+@media (min-width: 601px) {
+  #hideShow {
+    max-width: 100%;
+    background-color: transparent;
+    font-size: 1rem;
+    margin: 1rem auto;
+    cursor: pointer;
+    width: 5rem;
+    padding: 0.5rem 0.5rem;
+    border: solid 1px #611515;
+    color: whitesmoke;
+    border-radius: 0.625rem;
+    -webkit-border-radius: 0.625rem;
+    -moz-border-radius: 0.625rem;
+    -ms-border-radius: 0.625rem;
+    -o-border-radius: 0.625rem;
+  }
+}
+#hideShow:hover {
+  background-color: whitesmoke;
+  color: black;
+}

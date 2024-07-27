@@ -9,6 +9,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Fflinks />} />
           <Route path="/show" element={<ShowPage />} />
+          <Route path="*" element={<Fflinks />} />
         </Routes>
       </Router>
     </>

@@ -8,8 +8,8 @@ export default defineConfig({
       "/api": {
         target: "https://suk-learn-bzl4l7ns2-kuramas-projects.vercel.app",
         changeOrigin: true,
-        secure: false,
-        // secure: true,
+        // secure: false,
+        secure: true,
       },
     },
   },
@@ -20,7 +20,7 @@ export default defineConfig({
         entryFileNames: "assets/js/[name]-[hash].js",
 
         assetFileNames: ({ name }) => {
-          if (/\.(gif|jpe?g|png|svg|avifs)$/.test(name ?? "")) {
+          if (/\.(gif|jpe?g|png|svg|avifs|avif)$/.test(name ?? "")) {
             return "assets/images/[name]-[hash][extname]";
           }
 

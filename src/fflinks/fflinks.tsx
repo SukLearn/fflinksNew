@@ -1,18 +1,19 @@
 import styles from "./fflinks.module.css";
 import { useState, FormEvent } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Footer from "./Components/Footer/footer";
+import Flicker from "./Components/Flicker/Flicker";
+import ShowDelete from "./Components/Button/Show-Delete/Show-Delete";
+import Hide from "./Components/Button/Hide/Hide";
+import Gatsby from "./Components/Button/Hide/GatsbyImg/Gatsby";
 export default function Fflinks() {
-  const [display, setDisplay] = useState("block");
   const [inputValue, setInputValue] = useState("");
+  const [display, setDisplay] = useState("block");
 
-  const navigate = useNavigate();
-
-  const handleShow = async () => {
-    navigate("/show");
+  const showHide = () => {
+    const hide = display === "block" ? "none" : "block";
+    setDisplay(hide);
   };
-
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     try {
@@ -42,22 +43,6 @@ export default function Fflinks() {
       console.error("Failed to read clipboard contents: ", err);
     }
   };
-  const showHide = () => {
-    const hide = display === "block" ? "none" : "block";
-    setDisplay(hide);
-  };
-
-  const handleDelete = async () => {
-    try {
-      const response = await axios.delete(
-        "https://suk-learn-api.vercel.app/api/fflinks/DELETE"
-      );
-      console.log(response.data);
-      window.location.reload();
-    } catch (err) {
-      console.error("Error occurred", err);
-    }
-  };
 
   return (
     <div className={styles.body}>
@@ -81,30 +66,12 @@ export default function Fflinks() {
           <button id={styles.middle} type="submit">
             Paste
           </button>
-          <div className={styles.bottom}>
-            <button type="button" onClick={handleShow}>
-              Show
-            </button>
-            <button type="button" onClick={handleDelete}>
-              Clear
-            </button>
-          </div>
+          <ShowDelete />
         </form>
-        <button id={styles.hideShow} onClick={showHide}>
-          {display === "block" ? "Hide" : "Show"}
-        </button>
+        <Hide display={display} showHide={showHide} />
       </div>
-      <img
-        style={{ display: display }}
-        src="assets\images\test.avifs"
-        alt="The Great Gatsby Gives Toast"
-        id={styles.great}
-      />
-      <div className={styles.sign}>
-        <span className={styles.fastFlicker}>F</span>F
-        <span className={styles.flicker}>LI</span>N
-        <span className={styles.flicker}>K</span>S
-      </div>
+      <Gatsby display={display} />
+      <Flicker />
       <Footer />
     </div>
   );
