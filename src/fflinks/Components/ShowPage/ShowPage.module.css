@@ -1,42 +1,17 @@
 .showBd {
-  height: 100vh;
   background-image: url("/src/images/showBack1.avif");
   background-repeat: no-repeat;
   background-size: cover;
-  color: white;
   background-attachment: fixed;
+  /* background-color: #4f4f4f; */
+  color: white;
   margin: 0;
   padding: 0;
   height: 100vh;
   display: flex;
   align-items: center;
 }
-.copyToClipboard {
-  cursor: pointer;
-  transition: all 0.5s ease;
-  color: #fff;
-  border: 2px solid white;
-  width: 100px;
-  font-family: "Roboto", sans-serif;
-  text-transform: uppercase;
-  text-align: center;
-  line-height: 1;
-  font-weight: 500;
-  font-size: 15px;
-  background-color: transparent;
-  padding: 8px 10px;
-  outline: none;
-  border-radius: 25px;
-  -webkit-border-radius: 25px;
-  -moz-border-radius: 25px;
-  -ms-border-radius: 25px;
-  -o-border-radius: 25px;
-}
-.copyToClipboard:hover {
-  color: #001f3f;
-  background-color: #fff;
-  cursor: pointer;
-}
+.copyToClipboard,
 .modalButton {
   cursor: pointer;
   transition: all 0.5s ease;
@@ -58,11 +33,13 @@
   -ms-border-radius: 25px;
   -o-border-radius: 25px;
 }
+.copyToClipboard:hover,
 .modalButton:hover {
   color: #001f3f;
   background-color: #fff;
   cursor: pointer;
 }
+
 .content {
   padding: 5px 20px 5px 20px;
   font-size: 3rem;
@@ -93,24 +70,27 @@
   font-weight: bold;
 }
 /* TABLE */
-.table {
+.tableContainer {
   display: flex;
-  position: relative;
-  top: 20%;
-}
-table {
-  padding: 10px 25px;
-  background-color: rgb(41, 37, 37);
+  max-height: 600px;
+  overflow-y: auto;
   border: solid 5px green;
+  position: relative;
+  background-color: rgb(41, 37, 37);
+  padding: 10px 25px;
+  top: 20%;
   border-radius: 15px;
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   -ms-border-radius: 15px;
   -o-border-radius: 15px;
 }
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
 th {
   font-size: 1.5rem;
-  /* padding: 5px; */
   padding: 20px 15px;
   font-weight: 500;
   color: #fff;
