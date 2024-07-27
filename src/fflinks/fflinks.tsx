@@ -1,4 +1,5 @@
 import styles from "./fflinks.module.css";
+import DOMPurify from "dompurify";
 import { useState, FormEvent } from "react";
 import axios from "axios";
 import Footer from "./Components/Footer/footer";
@@ -16,10 +17,12 @@ export default function Fflinks() {
   };
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
+    const sanitizedInput = DOMPurify.sanitize(inputValue);
+
     try {
       const response = await axios.post(
         "https://suk-learn-api.vercel.app/api/fflinks/POST",
-        { text: inputValue },
+        { text: sanitizedInput },
         { headers: { "Content-Type": "application/json" } }
       );
       console.log("Form submitted with response:", response.data);
