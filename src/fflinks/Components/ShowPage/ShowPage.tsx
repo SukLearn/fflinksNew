@@ -79,7 +79,7 @@ export default function ShowPage() {
       <div className={styles.showBd}>
         <div className={styles.truth}>
           <span className={styles.show}>
-            <span className={styles.replace}>Show Data</span>
+            <span>Show Data</span>
           </span>
         </div>
         <div className={styles.tableContainer}>

@@ -7,6 +7,7 @@ import Flicker from "./Components/Flicker/Flicker";
 import ShowDelete from "./Components/Button/Show-Delete/Show-Delete";
 import Hide from "./Components/Button/Hide/Hide";
 import Gatsby from "./Components/Button/Hide/GatsbyImg/Gatsby";
+import HelpModal from "./Components/HelpModal/HelpModal";
 export default function Fflinks() {
   const [inputValue, setInputValue] = useState("");
   const [display, setDisplay] = useState("block");
@@ -76,6 +77,7 @@ export default function Fflinks() {
       <Gatsby display={display} />
       <Flicker />
       <Footer />
+      <HelpModal />
     </div>
   );
 }
