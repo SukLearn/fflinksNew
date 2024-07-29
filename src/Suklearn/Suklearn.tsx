@@ -11,14 +11,14 @@ export default function SukLearn() {
   }, []);
 
   const handleMouseMove = (event: React.MouseEvent) => {
-    // console.log("mouse pos: ", event.clientX, event.clientY);
-    const leftPos = event.clientX;
-    const topPost = event.clientY;
+    console.log("mouse pos: ", event.clientX, event.clientY);
+    // const leftPos = event.clientX;
+    // const topPost = event.clientY;
   };
 
   return (
     <>
-      <div onMouseMove={handleMouseMove}>
+      <div className={styles.wrapper} onMouseMove={handleMouseMove}>
         <div className={styles.cursor} ref={cursorRef}>
           <h1>test</h1>
         </div>

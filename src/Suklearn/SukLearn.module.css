@@ -1,11 +1,11 @@
 body {
-  background-color: #1d1e22;
+  background-color: #09192f;
   display: flex;
   text-align: center;
   align-items: center;
   justify-content: center;
-  color: #fff;
-  /* cursor: none; */
+  color: #54cdb5;
+  /* cursor: ; */
 }
 
 .rounded {
