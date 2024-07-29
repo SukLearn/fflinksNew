@@ -1,0 +1,41 @@
+body {
+  background-color: #1d1e22;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  /* cursor: none; */
+}
+
+.rounded {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+}
+
+.pointed {
+  width: 7px;
+  height: 7px;
+  background-color: white;
+  border-radius: 50%;
+}
+.cursor {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border: solid 2px #eee;
+  left: 0;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+.links {
+  text-decoration: none;
+  color: white;
+  font-size: 3rem;
+  line-height: 250px;
+}
