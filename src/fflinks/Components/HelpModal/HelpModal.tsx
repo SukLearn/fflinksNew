@@ -25,6 +25,8 @@ export default function HelpModal() {
         if (sequenceString.includes("fflinks")) {
           window.open("https://fflinks.net");
           return [];
+        } else if (sequenceString.includes("suk")) {
+          window.location.replace("https://suklearn.com");
         }
         return newSequence;
       });
@@ -61,7 +63,7 @@ export default function HelpModal() {
           <p id={styles.text}>
             Here are some helpful key sequences to get you started: <br />
             unfortunately for now we only have developed "h" that stands for
-            help and key sequence "fflinks"
+            help and key sequence are "fflinks" and "suk"
           </p>
         </div>
       </Modal>

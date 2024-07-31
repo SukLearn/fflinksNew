@@ -4,6 +4,7 @@ import styles from "./ShowPage.module.css";
 import axios from "axios";
 import Author from "../../../Components/Author/author";
 import Loading from "../LoadingPage/Loading";
+import HelpModal from "../HelpModal/HelpModal";
 interface DataItem {
   id: number;
   input_value: string;
@@ -131,6 +132,7 @@ export default function ShowPage() {
         )}
 
         <Author />
+        <HelpModal />
       </div>
     </>
   );

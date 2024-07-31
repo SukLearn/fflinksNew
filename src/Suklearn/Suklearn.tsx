@@ -1,45 +1,58 @@
 import { Link } from "react-router-dom";
 import styles from "./SukLearn.module.css";
-import { useEffect, useRef } from "react";
+// import { useEffect, useRef, useState } from "react";
+import AnimatedCursor from "react-animated-cursor";
+import Content from "../Components/Content/Content";
 export default function SukLearn() {
-  const cursorRef = useRef(null);
-  useEffect(() => {
-    const cursor = cursorRef.current;
-    if (cursor) {
-      console.log("element ", cursor);
-    }
-  }, []);
-
-  const handleMouseMove = (event: React.MouseEvent) => {
-    console.log("mouse pos: ", event.clientX, event.clientY);
-    // const leftPos = event.clientX;
-    // const topPost = event.clientY;
-  };
+  // const [color, setColor] = useState([
+  //   "white",
+  //   "dark",
+  //   "orange",
+  //   "pink",
+  //   "lightBlue",
+  // ]);
 
   return (
     <>
-      <div className={styles.wrapper} onMouseMove={handleMouseMove}>
-        <div className={styles.cursor} ref={cursorRef}>
-          <h1>test</h1>
+      <div className={styles.wrapper}>
+        <div className={styles.header}>
+          <div id={styles.logo}>
+            <Link to="/">
+              {/* <img src="assets/images/SuklearnLogo.svg" alt="Logo" /> */}
+              <img src="src/images/SuklearnLogo.svg" alt="Logo" />
+              <p id={styles.logoName}>uklearn</p>
+            </Link>
+          </div>
+          <div className={styles.links}>
+            <Link to="/fflinks">
+              <span>01.</span> fflinks
+            </Link>
+            <Link to="/projects">
+              <span>02.</span> Projects
+            </Link>
+            <Link to="/contact">
+              <span>03.</span> Contact
+            </Link>
+            <Link to="/honors">
+              <span>04.</span> Honors
+            </Link>
+            <button className={styles.change}>change</button>
+          </div>
         </div>
-        {/* <div className={styles.rounded}>
-          <div className={styles.pointed}></div>
-        </div> */}
-        <Link className={styles.links} to="/fflinks">
-          fflinks
-        </Link>
-        <br />
-        <Link className={styles.links} to="/projects">
-          Projects
-        </Link>
-        <br />
-        <Link className={styles.links} to="/contact">
-          contact
-        </Link>
-        <br />
-        <Link className={styles.links} to="/honors">
-          honors
-        </Link>
+        <Content />
+        <AnimatedCursor
+          innerSize={8}
+          outerSize={32}
+          color="102, 217, 237"
+          outerAlpha={0}
+          innerScale={2.5}
+          outerStyle={{
+            border: "1px solid #66d9ed",
+          }}
+          outerScale={1}
+          showSystemCursor={true}
+          trailingSpeed={5}
+        />
       </div>
     </>
   );

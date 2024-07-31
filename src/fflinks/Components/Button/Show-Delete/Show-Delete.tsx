@@ -6,7 +6,7 @@ export default function ShowDelete() {
   const navigate = useNavigate();
 
   const handleShow = async () => {
-    navigate("/show");
+    navigate("show");
   };
   const handleDelete = async () => {
     try {
