@@ -1,4 +1,72 @@
 .content {
   display: flex;
-  margin: 100px 100px;
+  margin: 200px 200px;
+  word-spacing: 2px;
+  line-height: 105px;
+}
+.greetingContainer {
+  line-height: 400%;
+}
+#greeting {
+  display: inline-block;
+  font-weight: 500;
+  font-size: 1.25rem;
+  border-right: solid 0.1em transparent;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: name duration timing-function delay iteration-count direction
+    fill-mode;
+  animation: typing 0.7s steps(200, end) 1s, blink-caret 2.75s step-end 1s 1;
+  -webkit-animation: typing 0.7s steps(200, end) 1s,
+    blink-caret 2.75s step-end 1s 1;
+}
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 210px;
+  }
+}
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: orange;
+  }
+  50% {
+    border-color: transparent;
+  }
+}
+
+#author {
+  color: #ccd8f8;
+  font-size: 2.8rem;
+  font-weight: 800;
+}
+#main {
+  color: #8892b0;
+  font-size: 4rem;
+  word-spacing: 10px;
+  font-weight: 800;
+}
+#contentText {
+  color: #727e9e;
+  font-weight: 500;
+  line-height: 25px;
+  padding: 0 0 0 50px;
+  width: 650px;
+}
+.checkout {
+  background-color: transparent;
+  border: solid 1px #54cdb5;
+  color: #54cdb5;
+  width: 200px;
+  height: 50px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  cursor: pointer;
+  margin: 50px 50px;
 }
