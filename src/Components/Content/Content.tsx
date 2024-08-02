@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./Content.module.css";
 export default function Content() {
   return (
@@ -6,7 +7,9 @@ export default function Content() {
         <div className={styles.greetingContainer}>
           <p id={styles.greeting}>&lt;p&gt; Hi my name is &lt;p&gt;</p>
         </div>
-        <p id={styles.author}>&lt; Luka Tarkhnishvili &gt;</p>
+        <div className={styles.authorContainer}>
+          <p id={styles.author}>&lt; Luka Tarkhnishvili &gt;</p>
+        </div>
         <p id={styles.main}>&lt; I build things for web &gt;</p>
 
         <p id={styles.contentText}>
@@ -14,8 +17,9 @@ export default function Content() {
           developing and coding logic. Currently, I am focused on honing my
           skills and expanding my knowledge in this field.
         </p>
-        <button type="button" className={styles.checkout}>
-          Check Out my Projects
+
+        <button className={styles.checkout}>
+          <Link to="/projects">Check Out my Projects</Link>
         </button>
       </div>
     </>
