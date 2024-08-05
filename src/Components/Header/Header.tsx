@@ -38,7 +38,7 @@ export default function Header() {
         {width >= 1060 ? (
           <>
             <div className={styles.links}>
-              <Link to="/fflinks">
+              <Link to="/fflinks" title="Made for my Brother">
                 <span>01.</span> fflinks
               </Link>
               <Link to="/projects">
@@ -50,8 +50,18 @@ export default function Header() {
               <Link to="/honors">
                 <span>04.</span> Honors
               </Link>
-              <button className={styles.change}>change</button>
-              <button onClick={toggleAnimation}>animation</button>
+              <button className={styles.change} title="Color Palette Button">
+                change
+              </button>
+              <button
+                className={` ${
+                  animation
+                    ? styles.animationButtonOn
+                    : styles.animationButtonOff
+                }`}
+                title="Animation Show button"
+                onClick={toggleAnimation}
+              ></button>
             </div>
           </>
         ) : (

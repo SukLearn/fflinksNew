@@ -4,6 +4,7 @@ import AnimatedCursor from "react-animated-cursor";
 
 import Content from "../Components/Content/Content";
 import Header from "../Components/Header/Header";
+import { AnimationProvider } from "../Functions/AnimationContext";
 export default function SukLearn() {
   // const [color, setColor] = useState([
   //   "white",
@@ -17,7 +18,9 @@ export default function SukLearn() {
     <>
       <div className={styles.wrapper}>
         <Header />
-        <Content />
+        <AnimationProvider>
+          <Content />
+        </AnimationProvider>
         <AnimatedCursor
           innerSize={8}
           outerSize={32}

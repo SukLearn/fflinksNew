@@ -141,3 +141,40 @@
     margin-left: 25px;
   }
 }
+.animationButtonOn,
+.animationButtonOff {
+  background-color: transparent;
+  border: 1px solid #40a595;
+  color: #40a595;
+  font-size: 1.35em;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+.animationButtonOn:after {
+  color: red;
+  content: "On";
+  animation: upwards 0s 2s forwards;
+  -webkit-animation: upwards 0s 2s forwards;
+}
+.animationButtonOff:after {
+  color: blue;
+  content: "Off";
+}
+@keyframes upwards {
+  from {
+    transform: translateY(0);
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100px);
+  }
+}
