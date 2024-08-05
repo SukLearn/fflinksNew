@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./Content.module.css";
+
 export default function Content() {
   return (
     <>

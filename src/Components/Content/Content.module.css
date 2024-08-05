@@ -1,13 +1,10 @@
 .content {
-  display: flex;
   margin: 200px 200px;
   word-spacing: 2px;
   line-height: 105px;
 }
 #greeting,
 #author {
-  display: inline-block;
-
   border-right: solid 0.1em transparent;
   overflow: hidden;
   white-space: nowrap;
@@ -18,6 +15,7 @@
   font-size: 2.8rem;
   font-weight: 800;
 }
+
 #greeting {
   font-weight: 500;
   font-size: 1.25rem;
@@ -55,10 +53,29 @@
   animation: show 0s 8.5s forwards, typing4 6s ease 8s forwards;
   -webkit-animation: show 0s 8.5s forwards, typing4 6s ease 8s forwards;
 }
-@keyframes show {
-  to {
-    visibility: visible;
-  }
+
+.checkout {
+  display: inline-block;
+  background-color: transparent;
+  border: solid 1px #54cdb5;
+  color: #54cdb5;
+  width: 200px;
+  height: 50px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  cursor: pointer;
+  margin: 50px 50px;
+  position: relative;
+  visibility: hidden;
+  animation: show 0s 8.5s forwards, jump 2s 8.5s ease 1;
+  -webkit-animation: show 0s 8.5s forwards, jump 2s 8.5s ease 1;
+}
+.checkout a {
+  text-decoration: none;
+  color: #54cdb5;
 }
 
 @keyframes typing {
@@ -69,7 +86,6 @@
     width: 210px;
   }
 }
-
 @keyframes typing2 {
   from {
     width: 0;
@@ -95,39 +111,6 @@
     opacity: 1;
   }
 }
-@keyframes blink-caret {
-  from,
-  to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: orange;
-  }
-}
-
-.checkout {
-  display: inline-block;
-  background-color: transparent;
-  border: solid 1px #54cdb5;
-  color: #54cdb5;
-  width: 200px;
-  height: 50px;
-  border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
-  cursor: pointer;
-  margin: 50px 50px;
-  position: relative;
-  visibility: hidden;
-  animation: show 0s 8.5s forwards, jump 2s 8.5s ease 1;
-  -webkit-animation: show 0s 8.5s forwards, jump 2s 8.5s ease 1;
-}
-.checkout a {
-  text-decoration: none;
-  color: #54cdb5;
-}
 @keyframes jump {
   0% {
     opacity: 0;
@@ -142,5 +125,58 @@
   }
   100% {
     transform: scale(1);
+  }
+}
+@keyframes show {
+  to {
+    visibility: visible;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: orange;
+  }
+}
+
+@media (max-width: 1060px) {
+  .content {
+    margin: 100px 100px;
+    line-height: 50px;
+  }
+  #author {
+    font-size: 1.4rem;
+    animation: show 0s 4s forwards, typing2 4s ease 4s forwards,
+      blink-caret 0.75s step-end 11;
+  }
+  #greeting {
+    font-size: 1rem;
+    animation: show 0s 1s forwards, typing 2s ease 1s forwards,
+      blink-caret 0.75s step-end 5;
+  }
+
+  #main {
+    font-size: 2rem;
+    word-spacing: 10px;
+  }
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 175px;
+    }
+  }
+  @keyframes typing2 {
+    from {
+      width: 0;
+    }
+    to {
+      width: 225px;
+    }
   }
 }
