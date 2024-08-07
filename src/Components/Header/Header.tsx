@@ -30,8 +30,8 @@ export default function Header() {
       <div className={styles.header}>
         <div id={styles.logo}>
           <Link to="/">
-            {/* <img src="assets/images/SuklearnLogo.svg" alt="Logo" /> */}
-            <img src="src/images/SuklearnLogo.svg" alt="Logo" />
+            <img src="assets/images/SuklearnLogo.svg" alt="Logo" />
+            {/* <img src="src/images/SuklearnLogo.svg" alt="Logo" /> */}
             <p id={styles.logoName}>uklearn</p>
           </Link>
         </div>
