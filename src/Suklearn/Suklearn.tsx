@@ -17,7 +17,7 @@ export default function SukLearn() {
   return (
     <>
       <div className={styles.wrapper}>
-        <Header />
+        <Header backgroundColor="#09192f" />
         <AnimationProvider>
           <Content />
         </AnimationProvider>

@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import tailwindcss from "tailwindcss";
 
 export default defineConfig({
   plugins: [react()],
@@ -30,6 +31,11 @@ export default defineConfig({
           return "assets/[name]-[hash][extname]";
         },
       },
+    },
+  },
+  css: {
+    postcss: {
+      plugins: [tailwindcss()],
     },
   },
 });

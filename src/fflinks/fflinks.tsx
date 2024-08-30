@@ -62,6 +62,8 @@ export default function Fflinks() {
           <input
             type="text"
             name="text-holder"
+            autoFocus
+            autoComplete="off"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             placeholder="Input Text Here"

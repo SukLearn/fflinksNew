@@ -68,6 +68,7 @@ html {
   border: 2px solid;
   animation: rgb 5s linear infinite;
   -webkit-animation: rgb 5s linear infinite;
+  color: black;
   border-radius: 15px;
   box-shadow: 2px 5px 0px 0px rgba(49, 71, 56, 0.34);
   -webkit-box-shadow: 2px 5px 0px 0px rgba(49, 71, 56, 0.34);
@@ -86,6 +87,7 @@ html {
   background-color: #f0f0f0;
   border: 3px solid whitesmoke;
   cursor: text;
+  color: black;
   animation: none;
   -webkit-animation: none;
 }
@@ -105,7 +107,7 @@ html {
 #top,
 #middle {
   border: 0.1rem solid #611515;
-  padding: 0.35rem 1.2rem;
+  padding: 0rem 1.2rem;
   margin: 0.7rem auto;
   cursor: pointer;
   color: white;
