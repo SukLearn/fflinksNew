@@ -9,7 +9,6 @@ body {
   width: 100vw;
   height: 100vh;
   color: white;
-  background-color: black;
 }
 .wrapper {
   display: flex;
@@ -124,4 +123,16 @@ body {
     opacity: 1;
     transform: translateY(0px);
   }
+}
+
+.help {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.1;
+  margin-right: 15px;
+  right: 0%;
+  bottom: 0%;
+}
+.help:hover {
+  opacity: 1;
 }
