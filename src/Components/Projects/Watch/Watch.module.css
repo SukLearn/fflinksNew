@@ -1,4 +1,8 @@
 body {
+  background-image: url(https://images.pexels.com/photos/5624978/pexels-photo-5624978.jpeg);
+  background-repeat: no-repeat;
+  /* background-size: cover; */
+  background-attachment: fixed;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -74,6 +78,32 @@ body {
   animation-fill-mode: backwards;
 }
 
+.btnActive {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  content: "";
+  display: inline-block;
+  display: flex;
+  z-index: -1;
+  transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -ms-transition: all 0.4s;
+  -o-transition: all 0.4s;
+}
+
+.btnActive::after {
+  opacity: 0;
+  transform: scaleX(1.4) scaleY(1.6);
+  -webkit-transform: scaleX(1.4) scaleY(1.6);
+  -moz-transform: scaleX(1.4) scaleY(1.6);
+  -ms-transform: scaleX(1.4) scaleY(1.6);
+  -o-transform: scaleX(1.4) scaleY(1.6);
+}
+.btnWhiteActive {
+  background-color: #fff;
+  color: #777;
+}
 @-webkit-keyframes moveInBottom {
   0% {
     opacity: 0;

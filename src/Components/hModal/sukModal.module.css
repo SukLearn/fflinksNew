@@ -1,0 +1,13 @@
+.modal {
+  color: black;
+}
+.title {
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+}
+.content {
+  display: flex;
+  align-items: center;
+  margin: 250px 0 0 0;
+}
