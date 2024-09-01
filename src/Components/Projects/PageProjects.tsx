@@ -1,6 +1,6 @@
 import "../../index.css";
 import Header from "../Header/Header";
-import "./Projects.css";
+import "./PageProjects.css";
 export default function Projects() {
   return (
     <>

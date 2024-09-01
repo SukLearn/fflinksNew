@@ -1,9 +1,11 @@
-import styles from "./Watch.module.css";
+import styles from "./StopWatch.module.css";
 import "../../../index.css";
 import { useEffect, useState } from "react";
 import SukModal from "../../hModal/sukModal";
+import Code from "../../Code/Code";
 // showing code modal and start stop
-const codeTsx = `export default function Watch() {
+const codeTsx = ``;
+const codeOldTsx = `export default function Watch() {
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const [showCss, setShowCss] = useState(false);
@@ -267,47 +269,38 @@ const codeCss = `body {
   width: 800px;
 }
 `;
+
 const text = `The stopwatch is a simple yet functional time-tracking tool designed to measure the duration of an event or task. It features a user-friendly interface that allows users to start, stop, and reset the timer with ease. The stopwatch displays the elapsed time in a clear and precise format, showing hours, minutes, seconds, and milliseconds.`;
 const problems = `The problem that I encountered was with setInterval. the function would not count if it wasn't in active tab, also I needed to adjust how it counts(intervals) because it worked differently than it should bu logic. the time wasn't matching phone's stopWatch. Both Problems solved via Date.now() function`;
 // const newTsx = ``;
-export default function Watch() {
-  const [showCss, setShowCss] = useState(false);
-  const [copy, setCopy] = useState(false);
+export default function StopWatch() {
   const [activeStart, setActiveStart] = useState(false);
   const [activeReset, setActiveReset] = useState(false);
   const [start, setStart] = useState(false);
   const [time, setTime] = useState(0);
   const [startTime, setStartTime] = useState<number | null>(0);
-
-  const handleCss = () => setShowCss(true);
-  const handleTsx = () => setShowCss(false);
-  const handleCopy = () => {
-    showCss ? codeCss : codeTsx;
-    const text = navigator.clipboard.writeText(showCss ? codeCss : codeTsx);
-    setCopy(true);
-
-    setInterval(() => setCopy(false), 2000);
-    console.log({ text });
-    console.clear();
-  };
-
+  const [elapsedTime, setElapsedTime] = useState(0);
   const Start = () => {
-    if (!start && startTime === 0) {
-      setStartTime(Date.now());
+    if (!start) {
+      const currentTime = Date.now();
+      setStartTime(currentTime - elapsedTime);
+      setStart(true);
+    } else {
+      setElapsedTime(Date.now() - (startTime || 0));
+      setStart(false);
     }
-    setStart(!start);
   };
 
   const Reset = () => {
     setTime(0);
     setStartTime(null);
+    setElapsedTime(0);
     setStart(false);
   };
-
   useEffect(() => {
     let interval: number;
     if (start && startTime !== null) {
-      interval = setInterval(() => {
+      interval = window.setInterval(() => {
         setTime(Date.now() - startTime);
       }, 10);
     }
@@ -374,44 +367,18 @@ export default function Watch() {
         </button>
       </div>
       {/*  gap-x-[185px] */}
-      <section className="grid grid-cols-4  mt-4 border w-[800px] ">
-        <div>
-          <button
-            onClick={handleTsx}
-            className="w-36 py-2 text-xl font-bold border-2 border-white	hover:bg-gray-500 "
-          >
-            Tsx
-          </button>
-        </div>
-        <div>
-          <button
-            onClick={handleTsx}
-            className="w-36 py-2 text-xl font-bold border-2 border-white	hover:bg-gray-500 "
-          >
-            Tsx(Old)
-          </button>
-        </div>
-        <div>
-          <button
-            onClick={handleCss}
-            className="w-36 py-2 text-xl font-bold border-2 border-white	hover:bg-gray-500 "
-          >
-            css
-          </button>
-        </div>
-        <div className="">
-          <button
-            className={`${styles.copy} w-36 py-2 text-xl font-bold border-2 border-white	hover:bg-gray-500`}
-            onClick={handleCopy}
-          >
-            {copy ? <span>&#9989;</span> : "Copy"}
-          </button>
-        </div>
-
-        <div className={styles.code}>
-          <pre className="text-lg">{showCss ? codeCss : codeTsx}</pre>
-        </div>
-      </section>
+      <Code
+        gridCols="grid-cols-4"
+        marginT="mt-1"
+        width="w-[800px]"
+        gap="gap-x-[76px]"
+        tsx="TSX"
+        TsxText={codeTsx}
+        css="CSS"
+        CssText={codeCss}
+        other="TsxOld"
+        OtherText={codeOldTsx}
+      />
       <SukModal
         title="stopWatch"
         text={text}

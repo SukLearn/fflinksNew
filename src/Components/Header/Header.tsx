@@ -51,7 +51,7 @@ const Header: React.FC<HeaderProps> = ({ backgroundColor }) => {
               <Link to="/contact">
                 <span>03.</span> Contact
               </Link>
-              <Link to="/projects">
+              <Link to="">
                 <span>04.</span> Instructions
               </Link>
               <button>

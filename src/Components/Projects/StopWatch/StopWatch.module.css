@@ -125,9 +125,3 @@ body {
     transform: translateY(0px);
   }
 }
-
-.code {
-  overflow: auto;
-  height: 540px;
-  width: 800px;
-}

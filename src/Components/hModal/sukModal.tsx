@@ -20,6 +20,7 @@ const SukModal: React.FC<ModalProps> = ({
 
   function closeModal() {
     setHelp(false);
+    setKeySequence([]);
     console.log(keySequence);
   }
   useEffect(() => {
@@ -44,6 +45,7 @@ const SukModal: React.FC<ModalProps> = ({
       });
       if (event.key === "h" || event.key === "H") {
         setHelp(true);
+        setKeySequence([]); //if i want to check wat user was clicking comment this line
       }
     };
     window.addEventListener("keyup", handleKeyDown);

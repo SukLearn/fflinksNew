@@ -2,9 +2,9 @@ import styles from "./SukLearn.module.css";
 // import { useEffect, useRef, useState } from "react";
 import AnimatedCursor from "react-animated-cursor";
 
-import Content from "../Components/Content/Content";
-import Header from "../Components/Header/Header";
-import { AnimationProvider } from "../Functions/AnimationContext";
+import Content from "../Content/Content";
+import Header from "../Header/Header";
+import { AnimationProvider } from "../../Functions/AnimationContext";
 export default function SukLearn() {
   // const [color, setColor] = useState([
   //   "white",
