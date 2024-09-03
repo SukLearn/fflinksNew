@@ -65,16 +65,19 @@ const SukModal: React.FC<ModalProps> = ({
         <div className={styles.modal}>
           <h1 className={styles.title}>{title}</h1>
 
-          <div className={styles.content}>
-            <p>{text}</p>
-            <p>
+          <div className="flex items-center p-28 mt-8 text-xl">
+            <p className="mb-10">{text}</p>
+            <p className="mb-10">
               technologies used in this project are: <br />
-              front:{front} <br />
-              back:{back}
+              front: {front} <br />
+              back: {back}
             </p>
             <br />
             <p>{problems}</p>
           </div>
+          <p className="flex text-3xl float-right">
+            Made by Luka Tarkhnishvili
+          </p>
         </div>
       </Modal>
     </>

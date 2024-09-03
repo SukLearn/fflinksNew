@@ -4,9 +4,13 @@ import { useEffect, useState } from "react";
 import logo from "../../images/SuklearnLogo.svg";
 
 interface HeaderProps {
-  backgroundColor: string;
+  backgroundImage?: string;
+  backgroundColor?: string;
 }
-const Header: React.FC<HeaderProps> = ({ backgroundColor }) => {
+const Header: React.FC<HeaderProps> = ({
+  backgroundColor,
+  backgroundImage,
+}) => {
   const [animation, setAnimation] = useState(true);
   const [width, setWidth] = useState(window.innerWidth);
 
@@ -32,7 +36,10 @@ const Header: React.FC<HeaderProps> = ({ backgroundColor }) => {
 
   return (
     <>
-      <div style={{ backgroundColor }} className={styles.header}>
+      <div
+        style={{ backgroundColor, backgroundImage }}
+        className={styles.header}
+      >
         <div id={styles.logo}>
           <Link to="/">
             <img src={logo} alt="Logo" id={styles.logo} />

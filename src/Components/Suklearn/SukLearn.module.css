@@ -7,8 +7,8 @@
 }
 .wrapper {
   background-color: #09192f;
+  min-height: 100vh;
   text-decoration: none;
-  height: 100vh;
   margin: 0;
   padding: 0;
   color: #54cdb5;

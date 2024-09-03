@@ -1,5 +1,7 @@
 .content {
-  margin: 200px 200px;
+  min-height: 100%;
+  /* margin: 200px 200px; */
+  padding: 200px 200px;
   word-spacing: 2px;
   line-height: 105px;
 }

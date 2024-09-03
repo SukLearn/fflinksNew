@@ -3,7 +3,9 @@ import "../../../index.css";
 import { useEffect, useState } from "react";
 import SukModal from "../../hModal/sukModal";
 import Code from "../../Code/Code";
-//  modal, audio
+import Header from "../../Header/Header";
+import StopWatchBack from "../../../images/stopWatch.avif";
+import audioForButton from "../../../images/startButton.mp3";
 
 export default function StopWatch() {
   const [activeStart, setActiveStart] = useState(false);
@@ -11,18 +13,28 @@ export default function StopWatch() {
   const [running, setRunning] = useState(false);
   const [startTime, setStartTime] = useState<number | null>(0);
   const [elapsedTime, setElapsedTime] = useState(0);
+
+  const audio = new Audio(audioForButton);
+  const audioPlay = () => {
+    audio.currentTime = 0;
+    audio.play();
+  };
+
   const Start = () => {
     if (!running) {
+      audioPlay();
       const currentTime = Date.now();
       setStartTime(currentTime - elapsedTime);
       setRunning(true);
     } else {
+      audioPlay();
       setElapsedTime(Date.now() - (startTime || 0));
       setRunning(false);
     }
   };
 
   const Reset = () => {
+    audioPlay();
     setElapsedTime(0);
     setStartTime(null);
     setRunning(false);
@@ -32,7 +44,8 @@ export default function StopWatch() {
     if (running && startTime !== null) {
       interval = window.setInterval(() => {
         setElapsedTime(Date.now() - startTime);
-      }, 10);
+      }, 50);
+      // can't go lower than 50 because of cpu(Huge Load)
     }
     return () => clearInterval(interval);
   }, [running, startTime]);
@@ -59,8 +72,9 @@ export default function StopWatch() {
     }
   };
   const handleKeyUp = (e: KeyboardEvent) => {
-    if (e.key == " " || e.key == "Enter") setActiveStart(false);
-    else if (e.key == "r") setActiveReset(false);
+    if (e.key == " " || e.key == "Enter") {
+      setActiveStart(false);
+    } else if (e.key == "r") setActiveReset(false);
   };
   useEffect(() => {
     window.addEventListener("keydown", handleKeydown);
@@ -338,78 +352,98 @@ export default function StopWatch() {
   }
   `;
   const codeTsx = `export default function StopWatch() {
-    const [activeStart, setActiveStart] = useState(false);
-    const [activeReset, setActiveReset] = useState(false);
-    const [running, setRunning] = useState(false);
-    const [startTime, setStartTime] = useState<number | null>(0);
-    const [elapsedTime, setElapsedTime] = useState(0);
-    const Start = () => {
-      if (!running) {
-        const currentTime = Date.now();
-        setStartTime(currentTime - elapsedTime);
-        setRunning(true);
-      } else {
-        setElapsedTime(Date.now() - (startTime || 0));
-        setRunning(false);
-      }
-    };
-  
-    const Reset = () => {
-      setElapsedTime(0);
-      setStartTime(null);
+  const [activeStart, setActiveStart] = useState(false);
+  const [activeReset, setActiveReset] = useState(false);
+  const [running, setRunning] = useState(false);
+  const [startTime, setStartTime] = useState<number | null>(0);
+  const [elapsedTime, setElapsedTime] = useState(0);
+
+  const audio = new Audio(audioForButton);
+  const audioPlay = () => {
+    audio.currentTime = 0;
+    audio.play();
+  };
+
+  const Start = () => {
+    if (!running) {
+      audioPlay();
+      const currentTime = Date.now();
+      setStartTime(currentTime - elapsedTime);
+      setRunning(true);
+    } else {
+      audioPlay();
+      setElapsedTime(Date.now() - (startTime || 0));
       setRunning(false);
+    }
+  };
+
+  const Reset = () => {
+    audioPlay();
+    setElapsedTime(0);
+    setStartTime(null);
+    setRunning(false);
+  };
+  useEffect(() => {
+    let interval: number;
+    if (running && startTime !== null) {
+      interval = window.setInterval(() => {
+        setElapsedTime(Date.now() - startTime);
+      }, 50);
+      // can't go lower than 50 because of cpu(Huge Load)
+    }
+    return () => clearInterval(interval);
+  }, [running, startTime]);
+
+  const Milliseconds = elapsedTime % 1000;
+  const Seconds = Math.floor((elapsedTime / 1000) % 60);
+  const Minutes = Math.floor((elapsedTime / 60000) % 60);
+  const Hours = Math.floor(elapsedTime / 3600000);
+
+  const formatTime = (time: number, digits: number = 2) =>
+    time.toString().padStart(digits, "0");
+  const formatMilliseconds = (time: number) =>
+    Math.floor(time / 10)
+      .toString()
+      .padStart(2, "0");
+
+  const handleKeydown = (e: KeyboardEvent) => {
+    if (e.key == " " || e.key == "Enter") {
+      Start();
+      setActiveStart(true);
+    } else if (e.key == "r") {
+      Reset();
+      setActiveReset(true);
+    }
+  };
+  const handleKeyUp = (e: KeyboardEvent) => {
+    if (e.key == " " || e.key == "Enter") {
+      setActiveStart(false);
+    } else if (e.key == "r") setActiveReset(false);
+  };
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeydown);
+    window.addEventListener("keyup", handleKeyUp);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeydown);
+      window.removeEventListener("keyup", handleKeyUp);
     };
-    useEffect(() => {
-      let interval: number;
-      if (running && startTime !== null) {
-        interval = window.setInterval(() => {
-          setElapsedTime(Date.now() - startTime);
-        }, 10);
-      }
-      return () => clearInterval(interval);
-    }, [running, startTime]);
-  
-    const Milliseconds = elapsedTime % 1000;
-    const Seconds = Math.floor((elapsedTime / 1000) % 60);
-    const Minutes = Math.floor((elapsedTime / 60000) % 60);
-    const Hours = Math.floor(elapsedTime / 3600000);
-  
-    const formatTime = (time: number, digits: number = 2) =>
-      time.toString().padStart(digits, "0");
-    const formatMilliseconds = (time: number) =>
-      Math.floor(time / 10)
-        .toString()
-        .padStart(2, "0");
-  
-    const handleKeydown = (e: KeyboardEvent) => {
-      if (e.key == " " || e.key == "Enter") {
-        Start();
-        setActiveStart(true);
-      } else if (e.key == "r") {
-        Reset();
-        setActiveReset(true);
-      }
-    };
-    const handleKeyUp = (e: KeyboardEvent) => {
-      if (e.key == " " || e.key == "Enter") setActiveStart(false);
-      else if (e.key == "r") setActiveReset(false);
-    };
-    useEffect(() => {
-      window.addEventListener("keydown", handleKeydown);
-      window.addEventListener("keyup", handleKeyUp);
-  
-      return () => {
-        window.removeEventListener("keydown", handleKeydown);
-        window.removeEventListener("keyup", handleKeyUp);
-      };
-    });
-    return (
-      <div className={\`\${styles.wrapper} grid justify-items-stretch\`}>
+  });
+
+
+
+  return (
+    <>
+      <Header backgroundImage={\`url(\${StopWatchBack})\`} />
+      <div
+        className={\`\${styles.wrapper} grid justify-items-stretch\`}
+        style={{ backgroundImage: \`url(\${StopWatchBack})\` }}
+      >
         <p className="text-6xl p-3 mt-20 bg-slate-700  rounded-xl">
           {formatTime(Hours)}:{formatTime(Minutes)}:{formatTime(Seconds)}:
           {formatMilliseconds(Milliseconds)}
         </p>
-  
+
         <div className={\`\${styles.buttons} grid grid-cols-2 gap-10\`}>
           <button
             onClick={Start}
@@ -440,64 +474,74 @@ export default function StopWatch() {
           other="TsxOld"
           OtherText={codeOldTsx}
         />
+
         <SukModal
           title="stopWatch"
           text={text}
           problems={problems}
-          front="React Vite, Typescript"
+          front="React Vite, Typescript, Css, Tailwind"
         />
+        <p className={styles.help}>Press H</p>
       </div>
-    );
-  }
-  `;
-  const text = `The stopwatch is a simple yet functional time-tracking tool designed to measure the duration of an event or task. It features a user-friendly interface that allows users to start, stop, and reset the timer with ease. The stopwatch displays the elapsed time in a clear and precise format, showing hours, minutes, seconds, and milliseconds.`;
+    </>
+  );
+}
+`;
+  const text = `The stopwatch is a simple yet functional time-tracking tool designed to measure the duration of an event or task. It features a user-friendly interface that allows users to start, stop, and reset the timer with ease. The stopwatch displays the elapsed time in a clear and precise format, showing hours, minutes, seconds, and milliseconds. User can also interact with keyboard(spaceBar, Enter and R)`;
   const problems = `The problem that I encountered was with setInterval. the function would not count if it wasn't in active tab, also I needed to adjust how it counts(intervals), because it worked differently, than it should. the time wasn't matching phone's stopWatch. To match phones StopWatch, I used Date.now(), by it function was able to count even, if the browser was Minimized. I encountered different problem, which was counting even after stopping function, to solve this problem I needed to add elapsedTime and currentTime. just subtracting values in solved problem. Both Problems.`;
   // Text End
 
   return (
-    <div className={`${styles.wrapper} grid justify-items-stretch`}>
-      <p className="text-6xl p-3 mt-20 bg-slate-700  rounded-xl">
-        {formatTime(Hours)}:{formatTime(Minutes)}:{formatTime(Seconds)}:
-        {formatMilliseconds(Milliseconds)}
-      </p>
+    <>
+      <Header backgroundImage={`url(${StopWatchBack})`} />
+      <div
+        className={`${styles.wrapper} grid justify-items-stretch`}
+        style={{ backgroundImage: `url(${StopWatchBack})` }}
+      >
+        <p className="text-6xl p-3 mt-20 bg-slate-700  rounded-xl">
+          {formatTime(Hours)}:{formatTime(Minutes)}:{formatTime(Seconds)}:
+          {formatMilliseconds(Milliseconds)}
+        </p>
 
-      <div className={`${styles.buttons} grid grid-cols-2 gap-10`}>
-        <button
-          onClick={Start}
-          className={`${styles.btn} ${styles.btnWhite} ${styles.btnAnimate} ${
-            activeStart ? `${styles.btnActive} ${styles.btnWhiteActive}` : ""
-          }`}
-        >
-          {!running ? "Start" : "Stop"}
-        </button>
-        <button
-          onClick={Reset}
-          className={`${styles.btn} ${styles.btnWhite} ${styles.btnAnimate} ${
-            activeReset ? `${styles.btnActive} ${styles.btnWhiteActive}` : ""
-          }`}
-        >
-          Reset
-        </button>
+        <div className={`${styles.buttons} grid grid-cols-2 gap-10`}>
+          <button
+            onClick={Start}
+            className={`${styles.btn} ${styles.btnWhite} ${styles.btnAnimate} ${
+              activeStart ? `${styles.btnActive} ${styles.btnWhiteActive}` : ""
+            }`}
+          >
+            {!running ? "Start" : "Stop"}
+          </button>
+          <button
+            onClick={Reset}
+            className={`${styles.btn} ${styles.btnWhite} ${styles.btnAnimate} ${
+              activeReset ? `${styles.btnActive} ${styles.btnWhiteActive}` : ""
+            }`}
+          >
+            Reset
+          </button>
+        </div>
+        <Code
+          gridCols="grid-cols-4"
+          marginT="mt-1"
+          width="w-[800px]"
+          gap="gap-x-[76px]"
+          tsx="TSX"
+          TsxText={codeTsx}
+          css="CSS"
+          CssText={codeCss}
+          other="TsxOld"
+          OtherText={codeOldTsx}
+        />
+
+        <SukModal
+          title="stopWatch"
+          text={text}
+          problems={problems}
+          front="React Vite, Typescript, Css, Tailwind"
+        />
+        <p className={styles.help}>Press H</p>
       </div>
-      <Code
-        gridCols="grid-cols-4"
-        marginT="mt-1"
-        width="w-[800px]"
-        gap="gap-x-[76px]"
-        tsx="TSX"
-        TsxText={codeTsx}
-        css="CSS"
-        CssText={codeCss}
-        other="TsxOld"
-        OtherText={codeOldTsx}
-      />
-      <SukModal
-        title="stopWatch"
-        text={text}
-        problems={problems}
-        front="React Vite, Typescript"
-      />
-      <p className={styles.help}>Press H</p>
-    </div>
+    </>
   );
 }
