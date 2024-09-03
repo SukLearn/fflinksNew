@@ -38,13 +38,14 @@ export default function Content() {
           </p>
         </div>
 
-        <button
+        <Link
           className={`${styles.checkout} ${
             animation ? styles.animationCheckOut : ""
           }`}
+          to="/projects"
         >
-          <Link to="/projects">Check Out my Projects</Link>
-        </button>
+          Check Out my Projects
+        </Link>
       </div>
     </>
   );

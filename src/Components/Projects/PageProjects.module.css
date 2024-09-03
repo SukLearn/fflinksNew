@@ -1,12 +1,16 @@
 html {
   scroll-behavior: smooth;
 }
-.section-1 {
+.wrapper {
+  min-height: 100vh;
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  height: calc(100vh - 100px);
 }
+
 #creative {
   background: linear-gradient(to right, red 33%, green 66%, blue 99%);
   background-clip: text;
@@ -26,23 +30,16 @@ html {
     background-position: 100% 50%;
   }
 }
-.snap-container {
-  height: 100vh; /* Full viewport height */
-  overflow-y: scroll; /* Enable vertical scrolling */
-  scroll-snap-type: y mandatory; /* Enable scroll snapping */
-}
 
-.snap-item {
-  height: 100vh; /* Full viewport height for each section */
+.snapItem {
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f0f0f0;
-  border-bottom: 1px solid #ddd;
-  scroll-snap-align: start; /* Snap to the start of each section */
+  scroll-snap-align: start;
   font-size: 2rem;
 }
-.lines-svg {
+/* .linesSvg {
   clip-path: inset(0 0 0 0);
   position: absolute;
   height: 100vh;
@@ -51,7 +48,4 @@ html {
   stroke: #2c2c2c;
   stroke-width: 15;
   height: 100vh;
-}
-.animation {
-  color: white;
-}
+} */

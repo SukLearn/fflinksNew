@@ -1,6 +1,6 @@
 .header {
   overflow: hidden;
-  padding: 0 25px;
+  padding: 10px 25px 0 25px;
   height: 80px;
   position: absolute;
   top: 0%;
@@ -46,10 +46,8 @@
 }
 
 .change {
-  display: inline;
-  margin-left: 50px;
+  display: inline-block;
   color: #40a595;
-  cursor: pointer;
   background-color: transparent;
   border: none;
 }
