@@ -7,21 +7,22 @@
   left: 0%;
   right: 0%;
 }
-
-#logo {
-  float: left;
-}
-#logoName {
-  float: right;
-  color: #fff;
-  font-size: 2.25rem;
-  margin-top: 14px;
-}
-
 .links {
   float: right;
   background-color: transparent;
   margin: 0 0 60px 0;
+}
+#logo {
+  float: left;
+  margin-top: -5px;
+  height: 80px;
+  width: 50px;
+}
+#logoName {
+  float: left;
+  color: #fff;
+  font-size: 2.25rem;
+  margin-top: 5px;
 }
 
 .links a {
@@ -49,6 +50,7 @@
   display: inline-block;
   color: #40a595;
   background-color: transparent;
+  margin: 0 50px;
   border: none;
 }
 .links a span {
@@ -147,6 +149,7 @@
   font-weight: 500;
   cursor: pointer;
   padding: 10px 15px;
+  margin: 0 25px;
   border-radius: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -160,7 +163,7 @@
   -webkit-animation: upwards 0s 2s forwards;
 }
 .animationButtonOff:after {
-  color: blue;
+  color: green;
   content: "Off";
 }
 @keyframes upwards {

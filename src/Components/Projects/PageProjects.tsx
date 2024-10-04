@@ -3,7 +3,7 @@ import "../../index.css";
 import Header from "../Header/Header";
 import styles from "./PageProjects.module.css";
 export default function Projects() {
-  const easyProjects = ["StopWatch"];
+  const easyProjects = ["StopWatch", "Calculator"];
   return (
     <>
       <div className={`${styles.wrapper} bg-black text-white`}>

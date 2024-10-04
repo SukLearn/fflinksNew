@@ -47,6 +47,13 @@ export default function Content() {
           Check Out my Projects
         </Link>
       </div>
+      <iframe
+        src="https://storage.googleapis.com/maps-solutions-75ab6skqkh/locator-plus/m0he/locator-plus.html"
+        width="100%"
+        height="1000px"
+        // style="border:0;"
+        loading="lazy"
+      ></iframe>
     </>
   );
 }

@@ -15,7 +15,7 @@ export default function ShowPage() {
   const [loading, setLoading] = useState<boolean>(true);
   const [copiedIndex, setCopiedIndex] = useState(-1);
   const [modalIsOpen, setIsOpen] = useState(false);
-
+  const phoneWidth = window.innerWidth;
   function openModal(index: number) {
     setIsOpen(true);
     setCopiedIndex(index);
@@ -26,8 +26,11 @@ export default function ShowPage() {
     setCopiedIndex(-1);
   }
   function trimming(text: string) {
-    if (text.length >= 50) {
-      return text.substring(0, 50) + "...";
+    if (phoneWidth < 411) {
+      return text.substring(0, 5) + "...";
+    }
+    if (text.length >= 25) {
+      return text.substring(0, 25) + "...";
     } else {
       return text;
     }
@@ -77,20 +80,20 @@ export default function ShowPage() {
 
   return (
     <>
-      <div className={styles.showBd}>
-        <div className={styles.truth}>
-          <span className={styles.show}>
+      <div className={styles.container}>
+        <div className={styles.title__truth}>
+          <span className={styles.title__show}>
             <span>Show Data</span>
           </span>
         </div>
-        <div className={styles.tableContainer}>
+        <div className={styles.table__container}>
           <table>
             <thead>
               <tr>
-                <th id={styles.startTh}>ID</th>
-                <th className={styles.otherTh}>Value</th>
-                <th className={styles.otherTh}>Copy</th>
-                <th id={styles.endTh}>View Full</th>
+                <th>ID</th>
+                <th>Value</th>
+                <th>Copy</th>
+                <th>View Full</th>
               </tr>
             </thead>
             <tbody>
@@ -125,7 +128,7 @@ export default function ShowPage() {
             onRequestClose={closeModal}
             contentLabel="Content"
           >
-            <div className={styles.content}>
+            <div className={styles.modal__content}>
               {data[copiedIndex].input_value}
             </div>
           </Modal>

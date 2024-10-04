@@ -498,7 +498,7 @@ export default function StopWatch() {
         className={`${styles.wrapper} grid justify-items-stretch`}
         style={{ backgroundImage: `url(${StopWatchBack})` }}
       >
-        <p className="text-6xl p-3 mt-20 bg-slate-700  rounded-xl">
+        <p className="text-6xl p-3 mt-20 bg-slate-700  rounded-xl  text-center">
           {formatTime(Hours)}:{formatTime(Minutes)}:{formatTime(Seconds)}:
           {formatMilliseconds(Milliseconds)}
         </p>
@@ -525,7 +525,7 @@ export default function StopWatch() {
           gridCols="grid-cols-4"
           marginT="mt-1"
           width="w-[800px]"
-          gap="gap-x-[76px]"
+          gap="gap-x-[200px]"
           tsx="TSX"
           TsxText={codeTsx}
           css="CSS"

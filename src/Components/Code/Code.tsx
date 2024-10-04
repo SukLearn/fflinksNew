@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "../../index.css";
+import { CopyButton, ActionIcon, Tooltip, rem } from "@mantine/core";
+import { IconCopy, IconCheck } from "@tabler/icons-react";
 
 import styles from "./Code.module.css";
 interface ModalProps {
@@ -28,7 +30,6 @@ const Code: React.FC<ModalProps> = ({
   OtherText,
 }) => {
   const [activeTab, setActiveTab] = useState<"tsx" | "css" | "other">("tsx");
-  const [copy, setCopy] = useState(false);
 
   const getCode = () => {
     switch (activeTab) {
@@ -43,21 +44,10 @@ const Code: React.FC<ModalProps> = ({
     }
   };
 
-  const handleCopy = () => {
-    const text = getCode() as string;
-    navigator.clipboard.writeText(text).then(() => setCopy(true));
-    setCopy(true);
-  };
-
-  useEffect(() => {
-    if (copy) {
-      const timer = setTimeout(() => setCopy(false), 2000);
-      return () => clearTimeout(timer);
-    }
-  }, [copy]);
-
   return (
-    <section className={`grid  ${gridCols} ${gap} ${marginT} border ${width}`}>
+    <section
+      className={`grid  ${gridCols} ${gap} ${marginT} border ${width} bg-[#212121] `}
+    >
       <div>
         <button
           onClick={() => setActiveTab("tsx")}
@@ -86,13 +76,30 @@ const Code: React.FC<ModalProps> = ({
           {css}
         </button>
       </div>
-      <div className="">
-        <button
-          className={`${styles.copy} w-36 py-2 text-xl font-bold border-2 border-white	hover:bg-gray-500`}
-          onClick={handleCopy}
-        >
-          {copy ? <span>&#9989;</span> : "Copy"}
-        </button>
+      <div>
+        <CopyButton value={getCode()!} timeout={2000}>
+          {({ copied, copy }) => (
+            <Tooltip
+              label={copied ? "Copied" : "Copy"}
+              withArrow
+              position="right"
+            >
+              <ActionIcon
+                className={`${styles.copyButton} w-64`}
+                color={copied ? "teal" : "gray"}
+                variant="subtle"
+                onClick={copy}
+                size={50}
+              >
+                {copied ? (
+                  <IconCheck size={rem(50)} />
+                ) : (
+                  <IconCopy size={rem(50)} style={{ stroke: "white" }} />
+                )}
+              </ActionIcon>
+            </Tooltip>
+          )}
+        </CopyButton>
       </div>
 
       <div className={styles.code}>
