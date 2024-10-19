@@ -71,7 +71,7 @@ export default function ShowPage() {
     fetchData();
   }, []);
 
-  if (loading)
+  if (!loading)
     return (
       <>
         <Loading />
