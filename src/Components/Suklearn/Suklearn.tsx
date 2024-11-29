@@ -1,10 +1,10 @@
 import styles from "./SukLearn.module.css";
 // import { useEffect, useRef, useState } from "react";
-import AnimatedCursor from "react-animated-cursor";
+// import AnimatedCursor from "react-animated-cursor";
 
-import Content from "../Content/Content";
-import Header from "../Header/Header";
-import { AnimationProvider } from "../../Functions/AnimationContext";
+// import Content from "../Content/Content";
+// import Header from "../Header/Header";
+// import { AnimationProvider } from "../../Functions/AnimationContext";
 export default function SukLearn() {
   // const [color, setColor] = useState([
   //   "white",
@@ -16,7 +16,11 @@ export default function SukLearn() {
 
   return (
     <>
-      <div className={styles.wrapper}>
+      <div className={styles.forTime}>
+        <h1>Website is under development</h1>
+        <p>due acquiring new skills, I am changing website design and logic</p>
+      </div>
+      {/* <div className={styles.wrapper}>
         <Header backgroundColor="#09192f" />
         <AnimationProvider>
           <Content />
@@ -34,7 +38,7 @@ export default function SukLearn() {
           showSystemCursor={true}
           trailingSpeed={5}
         />
-      </div>
+      </div> */}
     </>
   );
 }

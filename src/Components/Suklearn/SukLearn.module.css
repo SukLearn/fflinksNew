@@ -13,3 +13,19 @@
   padding: 0;
   color: #54cdb5;
 }
+
+.forTime {
+  text-align: center;
+  background-color: #09192f;
+  min-height: 100vh;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  color: #54cdb5;
+}
+.forTime h1 {
+  font-size: 3rem;
+}
+.forTime p {
+  font-size: 2rem;
+}
